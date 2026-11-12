@@ -1,0 +1,1 @@
+# ministock-app
