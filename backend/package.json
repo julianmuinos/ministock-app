@@ -1,0 +1,22 @@
+{
+  "name": "ministock-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Mini-Stock using Express and Cloud Firestore",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "seed": "node src/seed.js"
+  },
+  "keywords": ["inventory", "express", "firestore", "crud"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "firebase-admin": "^12.7.0"
+  }
+}
+
