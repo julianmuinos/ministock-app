@@ -4,9 +4,17 @@
 
 ---
 
+## 👥 Integrantes
+- **Alexis Fernando Rojas**
+- **Emanuel Ramirez**
+- **Julian Muiños**
+- **Santino Marchesini**
+
+---
+
 ## 🚀 Arquitectura y Tecnologías
-- **Frontend:** React 18, Vite, Tailwind CSS, Lucide Icons.
-- **Backend:** Node.js, Express.js (REST API).
+- **Frontend:** React 18, Vite, Tailwind CSS, Lucide Icons (Desplegado en **Cloudflare Pages**).
+- **Backend:** Node.js, Express.js (REST API) (Desplegado en **Northflank**).
 - **Base de Datos:** Cloud Firestore (Firebase Admin SDK).
 
 ---
@@ -21,7 +29,8 @@ ministock-app/
 │   │   ├── controllers/      # Lógica de negocio (CRUD de productos)
 │   │   ├── routes/           # Rutas /api/products
 │   │   ├── app.js            # Configuración de Express y middlewares
-│   │   └── index.js          # Punto de entrada del servidor
+│   │   ├── index.js          # Punto de entrada del servidor
+│   │   └── seed.js           # Script para poblar Firestore con datos iniciales
 │   ├── .env.example          # Variables de entorno de ejemplo
 │   ├── package.json
 │   └── serviceAccountKey.json (Credenciales de Firebase - Ignorado en git)
@@ -82,6 +91,7 @@ En una terminal:
 ```bash
 cd backend
 npm install
+npm run seed   # (Opcional) Poblar Firestore con 9 productos iniciales de prueba
 npm run dev
 ```
 El servidor arrancará en: **http://localhost:5000**
@@ -108,6 +118,19 @@ La aplicación web se abrirá en: **http://localhost:3000**
 | `POST` | `/api/products` | Crear un nuevo producto en Firestore |
 | `PUT` | `/api/products/:id` | Actualizar datos de un producto |
 | `DELETE`| `/api/products/:id` | Eliminar un producto |
+
+---
+
+## ☁️ Despliegue en Producción
+
+- **Backend (Northflank):**
+  - Build Context: `/backend` (Buildpack Node.js, Run Command: `npm start`, Puerto HTTP público: `5000`).
+  - Credenciales de Firebase: Cargadas mediante **Secret Files** en ruta absoluta `/etc/secrets/serviceAccountKey.json` y variable de entorno `FIREBASE_SERVICE_ACCOUNT_PATH=/etc/secrets/serviceAccountKey.json`.
+- **Frontend (Cloudflare Pages):**
+  - Framework preset: `Vite`.
+  - Root directory: `frontend`.
+  - Build command: `npm run build` | Output directory: `dist`.
+  - Variable de entorno: `VITE_API_URL=https://<tu-backend-northflank>/api`.
 
 ---
 
