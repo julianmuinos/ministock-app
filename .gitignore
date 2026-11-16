@@ -12,6 +12,7 @@ node_modules/
 .env
 .env.local
 .env.*.local
+.mern-cli.json
 
 # Firebase credentials
 *serviceAccountKey*.json
