@@ -1,0 +1,25 @@
+{
+  "name": "mern-cli-client",
+  "version": "1.0.0",
+  "description": "Cliente REST interactivo en terminal (TUI) con gestión de JWT e historial para backends Express/MERN",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": {
+    "mern-cli": "./src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.10.1",
+    "@inquirer/editor": "^4.1.2",
+    "axios": "^1.7.9",
+    "boxen": "^8.0.1",
+    "cli-highlight": "^2.1.11",
+    "cli-table3": "^0.6.5",
+    "jwt-decode": "^4.0.0",
+    "ora": "^8.2.0",
+    "picocolors": "^1.1.1"
+  }
+}
